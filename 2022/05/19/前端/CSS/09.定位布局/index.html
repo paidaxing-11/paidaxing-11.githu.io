@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="定位布局, 派大星_qMOW">
+    <meta name="description" content="基础知识定位的基本思想很简单，它允许你定义元素框相对于其正常位置应该出现的位置，或者相对于父元素、另一个元素甚至浏览器窗口本身的位置。
+轮播图是典型的定位应用
+
+下面弹出的二维码也可以使用定位处理
+
+定位类型
+
+
+选项
+说明
+
+
+
+stat">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>定位布局 | 派大星_qMOW</title>
+    <link rel="icon" type="image/png" href="/paidaxing-11.githu.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/css/my.css">
+
+    <script src="/paidaxing-11.githu.io/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+  <body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/paidaxing-11.githu.io/" class="waves-effect waves-light">
+                    
+                    <img src="/paidaxing-11.githu.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">派大星_qMOW</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/paidaxing-11.githu.io/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/paidaxing-11.githu.io/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/paidaxing-11.githu.io/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/paidaxing-11.githu.io/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/paidaxing-11.githu.io/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/paidaxing-11.githu.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">派大星_qMOW</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/paidaxing-11.githu.io/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/paidaxing-11.githu.io/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/paidaxing-11.githu.io/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/paidaxing-11.githu.io/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/paidaxing-11.githu.io/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/paidaxing-11" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #f54ea2;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/paidaxing-11" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+ 
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/paidaxing-11.githu.io/medias/featureimages/0.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">定位布局</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/paidaxing-11.githu.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/paidaxing-11.githu.io/tags/CSS/">
+                                <span class="chip bg-color">CSS</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/paidaxing-11.githu.io/categories/web%E5%89%8D%E7%AB%AF/" class="post-category">
+                                web前端
+                            </a>
+                        
+                            <a href="/paidaxing-11.githu.io/categories/web%E5%89%8D%E7%AB%AF/CSS/" class="post-category">
+                                CSS
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-05-19
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/paidaxing-11.githu.io/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><p>定位的基本思想很简单，它允许你定义元素框相对于其正常位置应该出现的位置，或者相对于父元素、另一个元素甚至浏览器窗口本身的位置。</p>
+<p>轮播图是典型的定位应用</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/image-20220515220852986.png"></p>
+<p>下面弹出的二维码也可以使用定位处理</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/image-20220515220916900-165262375787147.png"></p>
+<h3 id="定位类型"><a href="#定位类型" class="headerlink" title="定位类型"></a>定位类型</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>static</td>
+<td>默认形为，参考文档流</td>
+</tr>
+<tr>
+<td>relative</td>
+<td>相对定位</td>
+</tr>
+<tr>
+<td>absolute</td>
+<td>绝对定位</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>固定定位</td>
+</tr>
+<tr>
+<td>sticky</td>
+<td>粘性定位</td>
+</tr>
+</tbody></table>
+<h3 id="定位偏移"><a href="#定位偏移" class="headerlink" title="定位偏移"></a>定位偏移</h3><p>可以为部分类型的定位元素设置<code>上、下、左、右</code> 的位置偏移</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>top</td>
+<td>距离顶边</td>
+</tr>
+<tr>
+<td>bottom</td>
+<td>距离下边</td>
+</tr>
+<tr>
+<td>left</td>
+<td>距离左部</td>
+</tr>
+<tr>
+<td>right</td>
+<td>距离右边</td>
+</tr>
+</tbody></table>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/image-20220520004748125.png"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">&lt;style&gt;
+  body</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">article</span> <span class="token punctuation">{</span>
+      <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+      <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+      <span class="token property">border</span><span class="token punctuation">:</span> solid 6px blueviolet<span class="token punctuation">;</span>
+      <span class="token property">margin</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">div</span> <span class="token punctuation">{</span>
+      <span class="token property">font-size</span><span class="token punctuation">:</span> 25px<span class="token punctuation">;</span>
+      <span class="token property">background</span><span class="token punctuation">:</span> #f2a67d<span class="token punctuation">;</span>
+      <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+      <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+      <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+&lt;/style&gt;
+...
+
+&lt;article&gt;
+	&lt;div&gt;基于浏览器窗口&lt;/div&gt;
+&lt;/article&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用百分比单位时使用的是父级尺寸，比如下面的示例left:100%会定位到最右边</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/image-20220520004732582.png"></p>
+<h3 id="相对定位"><a href="#相对定位" class="headerlink" title="相对定位"></a>相对定位</h3><p>相对定位是相对于元素原来的位置控制，当元素发生位置偏移时，原位置留白</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/image-20220520004722127.png"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">&lt;style&gt;
+  body</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">article</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> solid 10px blueviolet<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">article img</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> -20px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+&lt;/style&gt;
+...
+
+&lt;article&gt;
+        &lt;img src=<span class="token string">"xj.png"</span> alt=<span class="token string">""</span>&gt;
+        后盾人自2010年创立至今，免费发布了大量高质量视频教程，视频在优酷、土豆、酷六等视频网站均有收录，很多技术爱好者受益其中。除了免费视频外，后盾人还为大家提供了面授班、远程班、公益公开课、VIP系列课程等众多形式的学习途径。后盾人有一群认真执着的老师，他们一心为同学着想，将真正的知识传授给大家是后盾人永远不变的追求。
+&lt;/article&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h3><p>绝对定义不受文档流影响，就像漂浮在页面中的精灵，绝对定位元素拥有行内块特性</p>
+<h4 id="参照元素"><a href="#参照元素" class="headerlink" title="参照元素"></a>参照元素</h4><p>如果父级元素设置了 <code>relative | fixed | sticky</code> ，绝对定位子元素将参数此父元素进行定位</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/image-20220515221902936-165262434420451.png"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">&lt;style&gt;
+	body</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">article</span> <span class="token punctuation">{</span>
+      <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+      <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+      <span class="token property">border</span><span class="token punctuation">:</span> solid 6px blueviolet<span class="token punctuation">;</span>
+      <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">div</span> <span class="token punctuation">{</span>
+      <span class="token property">font-size</span><span class="token punctuation">:</span> 25px<span class="token punctuation">;</span>
+      <span class="token property">background</span><span class="token punctuation">:</span> #f2a67d<span class="token punctuation">;</span>
+      <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+      <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+      <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+      <span class="token property">left</span><span class="token punctuation">:</span> 0px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+&lt;/style&gt;
+...
+
+&lt;article&gt;
+	&lt;div&gt;houdunren.com&lt;/div&gt;
+&lt;/article&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="默认位置"><a href="#默认位置" class="headerlink" title="默认位置"></a>默认位置</h4><p>如果没有为定位元素设置偏移，将受父元素的padding等属性影响。 但使用定位一般都会设置偏移位置</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/image-20220515222028417.png"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">body</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">article</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> solid 6px blueviolet<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">div</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #f2a67d<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="设置尺寸"><a href="#设置尺寸" class="headerlink" title="设置尺寸"></a>设置尺寸</h4><p>可以通过定位的偏移值设置元素的尺寸</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/image-20220520004621547.png"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">&lt;style&gt;
+	body</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">article</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> solid 6px blueviolet<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">div</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 25px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #f2a67d<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+&lt;/style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="居中定位"><a href="#居中定位" class="headerlink" title="居中定位"></a>居中定位</h4><p>通过将<code>left</code>设置为50%，并向左偏移子元素宽度一半可以实现水平居中，垂直居中使用方式类似</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/image-20220515222508328-165262470946353.png"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">&lt;style&gt;
+  body</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">article</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> solid 6px blueviolet<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">div</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #f2a67d<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">margin-left</span><span class="token punctuation">:</span> -100px<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">margin-top</span><span class="token punctuation">:</span> -100px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+&lt;/style&gt;
+
+&lt;article&gt;
+        &lt;div&gt;&lt;/div&gt;
+    &lt;/article&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="滚动行为"><a href="#滚动行为" class="headerlink" title="滚动行为"></a>滚动行为</h4><p>固定定位元素会随滚动条发生滚动</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/%E4%B8%8B%E8%BD%BD.gif"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">&lt;style&gt;
+  body</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">main</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> solid 10px blueviolet<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+    <span class="token property">overflow</span><span class="token punctuation">:</span> scroll<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">main article</span> <span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 600px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">main article div</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">main article div:nth-of-type(1)</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 0px<span class="token punctuation">;</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> 2<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+&lt;/style&gt;
+...
+
+&lt;main&gt;
+	&lt;article&gt;
+		&lt;div&gt;&lt;/div&gt;
+	&lt;/article&gt;
+&lt;/main&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="图标定位"><a href="#图标定位" class="headerlink" title="图标定位"></a>图标定位</h4><p>有了绝对定位我们可以很方便的控制元素在任何位置的摆放</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/image-20190823224657620.495f7702-165262494786055.png"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">*</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">main</span> <span class="token punctuation">{</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 3000px<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">main div</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> solid 6px blueviolet<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">main div img</span> <span class="token punctuation">{</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">main div span</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+  <span class="token property">line-height</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> blueviolet<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+  <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 0 5px <span class="token function">rgba</span><span class="token punctuation">(</span>100<span class="token punctuation">,</span> 100<span class="token punctuation">,</span> 100<span class="token punctuation">,</span> 0.8<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+...
+
+&lt;main&gt;
+    &lt;div&gt;
+        &lt;span&gt;热&lt;/span&gt;
+        &lt;img src=<span class="token string">"houdunren.jpg"</span> alt=<span class="token string">""</span>&gt;
+    &lt;/div&gt;
+&lt;/main&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="纵向重叠"><a href="#纵向重叠" class="headerlink" title="纵向重叠"></a>纵向重叠</h4><p>如果元素重叠在一起，可以使用 <code>z-index</code> 控制元素的上下层级，数值越大越在上面。</p>
+<p>父级子元素设置 <code>z-index</code> 没有意义，子元素永远在父元素上面的</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/image-20220520004323277.png"></p>
+<h4 id="层级改变"><a href="#层级改变" class="headerlink" title="层级改变"></a>层级改变</h4><p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/image-20220520004310058.png"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">&lt;style&gt;
+	body</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">article</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> solid 10px blueviolet<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+    <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">article:hover div:nth-of-type(2)</span> <span class="token punctuation">{</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> 2<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">article div</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">article div:nth-of-type(1)</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 0px<span class="token punctuation">;</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> 2<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">article div:nth-of-type(2)</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+&lt;/style&gt;
+...
+
+&lt;article&gt;
+	&lt;div&gt;&lt;/div&gt;
+	&lt;div&gt;&lt;/div&gt;
+&lt;/article&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="固定定位"><a href="#固定定位" class="headerlink" title="固定定位"></a>固定定位</h3><p>元素相对于页面固定定位在某个位置，固定定位元素不会在滚动时改变位置，使用<code>position: fixed</code> 产生固定定位</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/image-20220515223626494-165262538742258.png"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">&lt;style&gt;
+  header</span> <span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 60px<span class="token punctuation">;</span>
+    <span class="token property">border-bottom</span><span class="token punctuation">:</span> solid 5px #7f35c9<span class="token punctuation">;</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 5px 8px <span class="token function">rgba</span><span class="token punctuation">(</span>100<span class="token punctuation">,</span> 100<span class="token punctuation">,</span> 100<span class="token punctuation">,</span> 0.6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 0px<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 0px<span class="token punctuation">;</span>
+    <span class="token property">right</span><span class="token punctuation">:</span> 0px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">article</span> <span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 3000px<span class="token punctuation">;</span>
+    <span class="token property">margin-top</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #f3f3f3<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> solid 5px #ddd<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+&lt;/style&gt;
+...
+
+&lt;header&gt;&lt;/header&gt;
+&lt;article&gt;&lt;/article&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="粘性定位"><a href="#粘性定位" class="headerlink" title="粘性定位"></a>粘性定位</h3><h4 id="同级定位"><a href="#同级定位" class="headerlink" title="同级定位"></a>同级定位</h4><p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/Untitled-6569622.3d5e17b2-165262556333560.gif"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">&lt;style&gt;
+  *</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">main</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">main article</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> solid 5px blueviolet<span class="token punctuation">;</span>
+    <span class="token property">overflow</span><span class="token punctuation">:</span> scroll<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">main article h2</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #db1f77<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+    <span class="token property">text-indent</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> sticky<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">main article h2:nth-of-type(1)</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> blueviolet<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">main article section</span> <span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+&lt;/style&gt;
+...
+
+&lt;main&gt;
+    &lt;article&gt;
+        &lt;section&gt;&lt;/section&gt;
+        &lt;h2&gt;后盾人&lt;/h2&gt;
+        &lt;section&gt;&lt;/section&gt;
+        &lt;h2&gt;HOUDUNREN&lt;/h2&gt;
+        &lt;section&gt;&lt;/section&gt;
+    &lt;/article&gt;
+&lt;/main&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="非同级定位"><a href="#非同级定位" class="headerlink" title="非同级定位"></a>非同级定位</h4><p>不属于同一个父元素设置粘性定位时，后面的元素挤掉原来位置的元素如下例</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/Untitled-6568610.bd18d466-165262573988962.gif"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">&lt;style&gt;
+  *</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">main</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">main article</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> solid 5px blueviolet<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">overflow</span><span class="token punctuation">:</span> scroll<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">main article section:nth-of-type(odd) h2</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> blueviolet<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">main article section h2</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #db1f77<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+    <span class="token property">text-indent</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> sticky<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">main article section p</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+&lt;/style&gt;
+...
+
+&lt;main&gt;
+    &lt;article&gt;
+        &lt;section&gt;
+            &lt;h2&gt;hdcms.com&lt;/h2&gt;
+            &lt;p&gt;
+                后盾人自2010年创立至今，免费发布了大量高质量视频教程，视频在优酷、土豆、酷六等视频网站均有收录，很多技术爱好者受益其中。除了免费视频外，后盾人还为大家提供了面授班、远程班、公益公开课、VIP系列课程等众多形式的学习途径。后盾人有一群认真执着的老师，他们一心为同学着想，将真正的知识传授给大家是后盾人永远不变的追求。
+            &lt;/p&gt;
+        &lt;/section&gt;
+        &lt;section&gt;
+            &lt;h2&gt;后盾人&lt;/h2&gt;
+            &lt;p&gt;
+                后盾人隶属于北京后盾计算机技术培训有限责任公司，是专注于培养中国互联网精英PHP程序语言专业人才的专业型培训机构，拥有七年培训行业经验。后盾人拥有国内一线的讲师和技术团队，团队成员项目经验均在8年以上，团队曾多次为国内外上市集团、政府机关的大型项目提供技术支持，其中包括新浪、搜狐、腾讯、宝洁公司、联想、丰田、工商银行、中国一汽等众多大众所熟知的知名企业。
+            &lt;/p&gt;
+        &lt;/section&gt;
+        &lt;section&gt;
+            &lt;h2&gt;houdunwang.com&lt;/h2&gt;
+            &lt;p&gt;
+                后盾人自2010年创立至今，免费发布了大量高质量视频教程，视频在优酷、土豆、酷六等视频网站均有收录，很多技术爱好者受益其中。除了免费视频外，后盾人还为大家提供了面授班、远程班、公益公开课、VIP系列课程等众多形式的学习途径。后盾人有一群认真执着的老师，他们一心为同学着想，将真正的知识传授给大家是后盾人永远不变的追求。
+            &lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/article&gt;
+&lt;/main&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/paidaxing-11.githu.io/tags/CSS/">
+                                    <span class="chip bg-color">CSS</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/paidaxing-11.githu.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/paidaxing-11.githu.io/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/paidaxing-11.githu.io/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/paidaxing-11.githu.io/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/paidaxing-11.githu.io/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/paidaxing-11.githu.io/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: null,
+        id: '2022-05-19T17-25-30',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+        <link rel="stylesheet" href="/paidaxing-11.githu.io/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/paidaxing-11.githu.io/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitment-content" class="card-content"></div>
+</div>
+
+<script src="/paidaxing-11.githu.io/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Thu May 19 2022 17:25:30 GMT+0800',
+    owner: '',
+    repo: '',
+    oauth: {
+        client_id: '',
+        client_secret: ''
+    }
+});
+
+gitment.render('gitment-content');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/paidaxing-11.githu.io/2022/05/19/%E5%89%8D%E7%AB%AF/CSS/08.%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/paidaxing-11.githu.io/medias/featureimages/23.jpg" class="responsive-img" alt="浮动布局">
+                        
+                        <span class="card-title">浮动布局</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/paidaxing-11.githu.io/categories/web%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    web前端
+                                </a>
+                            
+                            <a href="/paidaxing-11.githu.io/categories/web%E5%89%8D%E7%AB%AF/CSS/" class="post-category">
+                                    CSS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/paidaxing-11.githu.io/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/paidaxing-11.githu.io/2022/05/19/%E5%89%8D%E7%AB%AF/Vue/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/paidaxing-11.githu.io/medias/featureimages/1.jpg" class="responsive-img" alt="组件通信">
+                        
+                        <span class="card-title">组件通信</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/paidaxing-11.githu.io/categories/web%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    web前端
+                                </a>
+                            
+                            <a href="/paidaxing-11.githu.io/categories/web%E5%89%8D%E7%AB%AF/vue/" class="post-category">
+                                    vue
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/paidaxing-11.githu.io/tags/vue/">
+                        <span class="chip bg-color">vue</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/paidaxing-11.githu.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/paidaxing-11.githu.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/paidaxing-11.githu.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/paidaxing-11.githu.io/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/paidaxing-11.githu.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+ <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/paidaxing-11.githu.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/paidaxing-11.githu.io/libs/aplayer/APlayer.min.js"></script>
+<script src="/paidaxing-11.githu.io/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            <!-- Copyright&nbsp;&copy; -->
+            
+                <!-- <span id="year">2022</span> -->
+            
+            <!-- <a href="/paidaxing-11.githu.io/about" target="_blank">派大星_qMOW</a> -->
+            <!-- |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
+            <br>
+            
+            
+            
+                
+            
+            
+                <!-- <span id="busuanzi_container_site_pv">
+                &nbsp;&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span> -->
+            
+            
+                <!-- <span id="busuanzi_container_site_uv">
+                &nbsp; &nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span> -->
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/paidaxing-11" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1904290943@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1904290943" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1904290943" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/paidaxing-11.githu.io/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+ <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/paidaxing-11.githu.io/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+ <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/paidaxing-11.githu.io/libs/materialize/materialize.min.js"></script>
+    <script src="/paidaxing-11.githu.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/paidaxing-11.githu.io/libs/aos/aos.js"></script>
+    <script src="/paidaxing-11.githu.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/paidaxing-11.githu.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/paidaxing-11.githu.io/js/matery.js"></script>
+
+     
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+    <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+    <script src="/paidaxing-11.githu.io/libs/others/TencentCaptcha.js"></script>
+    <button
+      id="TencentCaptcha"
+      data-appid="xxxxxxxxxx"
+      data-cbfn="callback"
+      type="button"
+      hidden
+    ></button>
+     <!-- Baidu Analytics -->
+ <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+ 
+    <script
+      src="/paidaxing-11.githu.io/libs/others/clicklove.js"
+      async="async"
+    ></script>
+     
+    <script
+      async
+      src="/paidaxing-11.githu.io/libs/others/busuanzi.pure.mini.js"
+    ></script>
+      
+
+    <!--腾讯兔小巢-->
+        
+    <script
+      src="/paidaxing-11.githu.io/libs/instantpage/instantpage.js"
+      type="module"
+    ></script>
+    
+  </body>
+</html>

@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="后台管理系统的一些配置, 派大星_qMOW">
+    <meta name="description" content="封装全局 svg 组件
+安装依赖
+
+#   如果出现错误可以适当降低版本
+npm install svg-sprite-loader --save-dev
+
+yarn add svg-sprite-loader ---dev
+
+
+创建 sv">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>后台管理系统的一些配置 | 派大星_qMOW</title>
+    <link rel="icon" type="image/png" href="/paidaxing-11.githu.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/css/my.css">
+
+    <script src="/paidaxing-11.githu.io/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+  <body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/paidaxing-11.githu.io/" class="waves-effect waves-light">
+                    
+                    <img src="/paidaxing-11.githu.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">派大星_qMOW</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/paidaxing-11.githu.io/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/paidaxing-11.githu.io/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/paidaxing-11.githu.io/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/paidaxing-11.githu.io/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/paidaxing-11.githu.io/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/paidaxing-11.githu.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">派大星_qMOW</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/paidaxing-11.githu.io/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/paidaxing-11.githu.io/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/paidaxing-11.githu.io/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/paidaxing-11.githu.io/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/paidaxing-11.githu.io/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/paidaxing-11" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #f54ea2;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/paidaxing-11" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+ 
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/paidaxing-11.githu.io/medias/featureimages/5.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">后台管理系统的一些配置</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/paidaxing-11.githu.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/paidaxing-11.githu.io/tags/%E9%A1%B9%E7%9B%AE/">
+                                <span class="chip bg-color">项目</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/paidaxing-11.githu.io/categories/web%E5%89%8D%E7%AB%AF/" class="post-category">
+                                web前端
+                            </a>
+                        
+                            <a href="/paidaxing-11.githu.io/categories/web%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/" class="post-category">
+                                项目
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-05-19
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/paidaxing-11.githu.io/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h4 id="封装全局-svg-组件"><a href="#封装全局-svg-组件" class="headerlink" title="封装全局 svg 组件"></a>封装全局 svg 组件</h4><ol>
+<li>安装依赖</li>
+</ol>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">#   如果出现错误可以适当降低版本
+npm install svg-sprite-loader --save-dev
+
+yarn add svg-sprite-loader ---dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>创建 svg 组件</li>
+</ol>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;template&gt;
+  &lt;svg class="svg-icon" aria-hidden="true"&gt;
+    &lt;use :xlink:href="`#icon-${name}`" /&gt;
+  &lt;/svg&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: "SvgIcon",
+  props: {
+    name: {
+      // svg文件名称
+      type: String,
+      required: true,
+    },
+  },
+};
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+.svg-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+&lt;/style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>新建存放 svg 文件的文件夹 及 index.js 文件</li>
+</ol>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">#       注册全局组件，批量引入svg图片文件
+import Vue from 'vue'
+import SvgIcon from '@/components/SvgIcon' // svg组件
+
+#	 	register globally
+Vue.component('svg-icon', SvgIcon)
+
+
+const requireAll = requireContext =&gt; requireContext.keys().map(requireContext)
+#       第一个参数为文件夹名称，第二个参数为是否检查其子目录，第三个参数为正则表达式
+const req = require.context('./svg', true, /\.svg$/)
+#       require.context 是webpack的一个api，通过执行require.context()函数，来获取指定的文件夹内的特定文件，在需要多次从同一个文件夹内倒入的模块，使用这个函数可以自动倒入，不用每个都显示的写import来引入
+
+#       requireAll--得到了所有导入的模块名数组
+#       req--webpack自动导入
+requireAll(req)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="4">
+<li>在人口文件 main.js 中引入</li>
+<li>配置 vue.config.js</li>
+</ol>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">chainWebpack: config =&gt; {
+  #	svg rule loader
+  const svgRule = config.module.rule("svg"); // 找到svg-loader
+  svgRule.uses.clear(); // 清除已有的loader, 如果不这样做会添加在此loader之后
+  svgRule.exclude.add(/node_modules/); // 正则匹配排除node_modules目录
+  svgRule // 添加svg新的loader处理
+    .test(/\.svg$/)
+    .use("svg-sprite-loader")
+    .loader("svg-sprite-loader")
+    .options({
+      symbolId: "icon-[name]"
+    });
+
+  // 修改images loader 添加svg处理
+  const imagesRule = config.module.rule("images");
+  imagesRule.exclude.add(resolve("src/icons"));
+  config.module.rule("images").test(/\.(png|jpe?g|gif|svg)(\?.*)?$/);
+},
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="vue-动画"><a href="#vue-动画" class="headerlink" title="vue 动画"></a>vue 动画</h4><blockquote>
+<p>触发动画条件：进入/离开 v-if/v-show/路由切换</p>
+</blockquote>
+<ol>
+<li>单元素动画</li>
+</ol>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;transition name="fade"&gt;
+      &lt;p&gt;这是一个动画&lt;/p&gt;
+    &lt;/transition&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+style
+    .fade-enter-active:进入动画的执行体
+    .fade-leave-active:离开动画的执行体
+    .fade-enter:进入时,希望从什么状态变到当前状态(正常显示状态)
+    .fade-leave-to:离开时,希望从正常状态变到什么状态<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>多元素动画</li>
+</ol>
+<p>多元素动画与单元素动画区别:</p>
+<ul>
+<li>多元素动画要用 transition-group 包住</li>
+<li>多动画动画元素要加 key</li>
+</ul>
+<h4 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h4><p>axios 作为网络请求的第三方工具, 可以进行请求和响应的拦截</p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">// 导出一个axios的实例  而且这个实例要有请求拦截器 响应拦截器
+import axios from "axios";
+const service = axios.create(); // 创建一个axios的实例
+service.interceptors.request.use(); // 请求拦截器
+service.interceptors.response.use(); // 响应拦截器
+export default service; // 导出axios实例<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="vue-cli-配置跨域代理"><a href="#vue-cli-配置跨域代理" class="headerlink" title="vue-cli 配置跨域代理"></a>vue-cli 配置跨域代理</h4><p>为什么会出现跨域？</p>
+<p>当下,最流行的就是<code>前后分离</code> 项目,也就是<code>前端项目</code>和<code>后端接口</code>并不在一个域名之下，那么前端项目访问后端接口必然存在<code>跨域</code>的行为.</p>
+<p>怎么解决这种跨域 ？</p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">#   请注意，我们所遇到的这种跨域是位于开发环境的，真正部署上线时的跨域是生产环境的
+    devServer: {
+#   代理配置
+    proxy: {
+#   这里的api 表示如果我们的请求地址有/api的时候,就出触发代理机制
+#   localhost:8888/api/abc  =&gt; 代理给另一个服务器
+#   本地的前端  =&gt; 本地的后端  =&gt; 代理我们向另一个服务器发请求 （行得通）
+#   本地的前端  =&gt; 另外一个服务器发请求 （跨域 行不通）
+        '/api': {
+#   我们要代理的地址
+        target: 'www.baidu.com',
+#   是否跨域 需要设置此值为true 才可以让本地服务代理我们发出请求
+        changeOrigin: true,
+#   路径重写
+        pathRewrite: {
+#   重新路由  localhost:8888/api/login  =&gt; www.baidu.com/api/login
+#   假设我们想把 localhost:8888/api/login 变成www.baidu.com/login 就需要这么做
+            '^/api': ''
+        }
+      },
+    }
+  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h4><p>前端主要区分两个环境,<code>开发环境</code>,<code>生产环境</code></p>
+<pre class="line-numbers language-VUE" data-language="VUE"><code class="language-VUE">process.env.NODE_ENV # 当为production时为生产环境 为development时为开发环境<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>环境文件<br>    我们可以在<code>.env.development</code>和<code>.env.production</code>定义变量，变量自动就为当前环境的值</p>
+<p>例如：</p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue"># 开发环境的基础地址和代理对应
+VUE_APP_BASE_API = '/api'
+
+# 这里配置了/prod-api,意味着需要在Nginx服务器上为该服务配置 nginx的反向代理对应/prod-api的地址
+VUE_APP_BASE_API = '/prod-api'
+
+# 配置axios baseURL
+const service = axios.create({
+# 如果执行 npm run dev  值为 /api 正确  /api 这个代理只是给开发环境配置的代理
+# 如果执行 npm run build 值为 /prod-api  没关系  运维应该在上线的时候 给你配置上 /prod-api的代理
+# 设置axios请求的基础的基础地址
+  baseURL: process.env.VUE_APP_BASE_API,
+})<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="token-的权限拦截"><a href="#token-的权限拦截" class="headerlink" title="token 的权限拦截"></a>token 的权限拦截</h4><p>权限拦截的流程图</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/image-token.png"></p>
+<p>流程图转化成代码</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 权限拦截 导航守卫 路由守卫  router</span>
+<span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">"@/router"</span><span class="token punctuation">;</span> <span class="token comment">// 引入路由实例</span>
+<span class="token keyword">import</span> store <span class="token keyword">from</span> <span class="token string">"@/store"</span><span class="token punctuation">;</span> <span class="token comment">// 引入vuex store实例</span>
+<span class="token keyword">import</span> NProgress <span class="token keyword">from</span> <span class="token string">"nprogress"</span><span class="token punctuation">;</span> <span class="token comment">// 引入一份进度条插件</span>
+<span class="token keyword">import</span> <span class="token string">"nprogress/nprogress.css"</span><span class="token punctuation">;</span> <span class="token comment">// 引入进度条样式</span>
+
+<span class="token keyword">const</span> whiteList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"/login"</span><span class="token punctuation">,</span> <span class="token string">"/404"</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 定义白名单  所有不受权限控制的页面</span>
+<span class="token comment">// 路由的前置守卫</span>
+router<span class="token punctuation">.</span><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  NProgress<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 开启进度条</span>
+  <span class="token comment">//  首先判断有无token</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>store<span class="token punctuation">.</span>getters<span class="token punctuation">.</span>token<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//   如果有token 继续判断是不是去登录页</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>to<span class="token punctuation">.</span>path <span class="token operator">===</span> <span class="token string">"/login"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">//  表示去的是登录页</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 跳到主页</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 直接放行</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 如果没有token</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>whiteList<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>path<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 如果找到了 表示在在名单里面</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token string">"/login"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 跳到登录页</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  NProgress<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 手动强制关闭一次  为了解决 手动切换地址时  进度条的不关闭的问题</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 后置守卫</span>
+router<span class="token punctuation">.</span><span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  NProgress<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭进度条</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 在导航守卫的位置，我们添加了NProgress的插件，可以完成进入时的进度条效果</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="token-失效处理的业务逻辑"><a href="#token-失效处理的业务逻辑" class="headerlink" title="token 失效处理的业务逻辑"></a>token 失效处理的业务逻辑</h4><p>开门的钥匙不是一直有效的，如果一直有效，会有安全风险，所以我们尝试在客户端进行一下 token 的时间检查</p>
+<p>主动介入处理</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 登录成功时 写入token的时间戳</span>
+Cookies<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>timeKey<span class="token punctuation">,</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">// axios请求拦截中检查token是否过期</span>
+<span class="token comment">// 定义超时时间</span>
+<span class="token keyword">const</span> TimeOut <span class="token operator">=</span> <span class="token number">3600</span>
+<span class="token comment">// 是否超时</span>
+<span class="token comment">// 超时逻辑  (当前时间  -  写入的时间) 是否大于 时间差</span>
+<span class="token keyword">function</span> <span class="token function">IsCheckTimeOut</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> currentTime <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 当前时间戳</span>
+  <span class="token keyword">var</span> timeStamp <span class="token operator">=</span> <span class="token function">getTimeStamp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 缓存时间戳</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>currentTime <span class="token operator">-</span> timeStamp<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">1000</span> <span class="token operator">&gt;</span> TimeOut
+<span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>store<span class="token punctuation">.</span>getters<span class="token punctuation">.</span>token<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 只有在有token的情况下 才有必要去检查时间戳是否超时</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">IsCheckTimeOut</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 如果它为true表示 过期了token没用了 因为超时了</span>
+      store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token string">'user/logout'</span><span class="token punctuation">)</span> <span class="token comment">// 登出操作</span>
+      <span class="token comment">// 跳转到登录页</span>
+      router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'/login'</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'token超时了'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>被动介入处理</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// axios响应拦截中检查token是否过期：以下只是示例代码</span>
+<span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// error 信息 里面 response的对象</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>
+    error<span class="token punctuation">.</span>response <span class="token operator">&amp;&amp;</span>
+    error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>data <span class="token operator">&amp;&amp;</span>
+    error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>data<span class="token punctuation">.</span>code <span class="token operator">===</span> <span class="token number">10002</span>
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 当等于10002的时候 表示 后端告诉我token超时了</span>
+    store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token string">"user/logout"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 登出action 删除token</span>
+    router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">"/login"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    Message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 提示错误信息</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="登陆后跳转至相应页面"><a href="#登陆后跳转至相应页面" class="headerlink" title="登陆后跳转至相应页面"></a>登陆后跳转至相应页面</h4><p>在路由守卫中跳转至登录页时 保存跳转前的 to.fullPath</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// to.path 不带参数的路径 to.fullPath 带参数的路径</span>
+<span class="token comment">// encodeURIComponent() 将字符串编码为 URI 参数 加密</span>
+<span class="token comment">// decodeURIComponent() 将 URI 编码过的字符串解码为原始字符串 解密</span>
+<span class="token function">next</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/login?redirect=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">encodeURIComponent</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>fullPath<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 登录时对会跳地址做相应处理</span>
+<span class="token keyword">let</span> _redirect <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$route<span class="token punctuation">.</span>query<span class="token punctuation">.</span>redirect<span class="token punctuation">;</span>
+_redirect
+  <span class="token operator">?</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token function">decodeURIComponent</span><span class="token punctuation">(</span>_redirect<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// token过期时同理做相应处理</span>
+router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/login?redirect=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">encodeURIComponent</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>fullPath<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="axios-取消接口请求"><a href="#axios-取消接口请求" class="headerlink" title="axios 取消接口请求"></a>axios 取消接口请求</h4><p>同一接口请求第二次时可以取消第一次的请求</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"请求地址"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"请求方式"</span><span class="token punctuation">,</span>
+  <span class="token comment">// cancelFn:这里的cancelFn就是取消axios接口请求的方法</span>
+  <span class="token literal-property property">cancelToken</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">axios<span class="token punctuation">.</span>CancelToken</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">cancelFn</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 定义一个变量用于存储所有的取消方法</span>
+<span class="token keyword">let</span> _cancelAll <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+window<span class="token punctuation">.</span><span class="token function-variable function">cancelAll</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  _cancelAll <span class="token operator">=</span> _cancelAll<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    item<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 请求拦截器中存储所有取消方法</span>
+<span class="token comment">// 拿到取消方法 请求前取消 请求完取消后要从数组中删除该项</span>
+config<span class="token punctuation">.</span>cancelToken <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">axios<span class="token punctuation">.</span>CancelToken</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">cancelFn</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  _cancelAll<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">url</span><span class="token operator">:</span> config<span class="token punctuation">.</span>url<span class="token punctuation">,</span>
+    <span class="token literal-property property">method</span><span class="token operator">:</span> config<span class="token punctuation">.</span>method<span class="token punctuation">,</span>
+    <span class="token literal-property property">fn</span><span class="token operator">:</span> cancelFn<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 同一接口请求取消操作</span>
+_cancelAll <span class="token operator">=</span> _cancelAll<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>item<span class="token punctuation">.</span>url <span class="token operator">===</span> config<span class="token punctuation">.</span>url <span class="token operator">&amp;&amp;</span> item<span class="token punctuation">.</span>method <span class="token operator">===</span> config<span class="token punctuation">.</span>method<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    item<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 页面切换时取消所有请求</span>
+router<span class="token punctuation">.</span><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  window<span class="token punctuation">.</span><span class="token function">cancelAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="页面路由整理"><a href="#页面路由整理" class="headerlink" title="页面路由整理"></a>页面路由整理</h4><p>因为复杂中台项目的页面众多，不可能把所有的业务都集中在一个文件上进行管理和维护，并且还有最重要的，</p>
+<p>前端的页面中主要分为两部分，一部分是所有人都可以访问的， 一部分是只有有权限的人才可以访问的，拆分多个模块便于更好的控制和维护。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//  公共路由</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> constantRoutes <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/login"</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"@/views/login/index"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">hidden</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/404"</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"@/views/404"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">hidden</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">component</span><span class="token operator">:</span> Layout<span class="token punctuation">,</span>
+    <span class="token literal-property property">redirect</span><span class="token operator">:</span> <span class="token string">"/dashboard"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"dashboard"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Dashboard"</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"@/views/dashboard/index"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">meta</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"Dashboard"</span><span class="token punctuation">,</span> <span class="token literal-property property">icon</span><span class="token operator">:</span> <span class="token string">"dashboard"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// 404 page must be placed at the end !!!</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span> <span class="token literal-property property">redirect</span><span class="token operator">:</span> <span class="token string">"/404"</span><span class="token punctuation">,</span> <span class="token literal-property property">hidden</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 动态路由需要权限才能访问</span>
+<span class="token comment">// 每个模块导出的内容表示该模块下的路由规则</span>
+<span class="token keyword">import</span> Layout <span class="token keyword">from</span> <span class="token string">"@/layout"</span><span class="token punctuation">;</span>
+<span class="token comment">// 每个子模块 其实 都是外层是layout  组件位于layout的二级路由里面</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/demo"</span><span class="token punctuation">,</span> <span class="token comment">// 路径</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"demo"</span><span class="token punctuation">,</span> <span class="token comment">// 给路由规则加一个name</span>
+  <span class="token literal-property property">component</span><span class="token operator">:</span> Layout<span class="token punctuation">,</span> <span class="token comment">// 组件</span>
+  <span class="token comment">// 配置二级路由的路由表</span>
+  <span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment">// 这里当二级路由的path什么都不写的时候 表示该路由为当前二级路由的默认路由</span>
+      <span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"@/views/demo"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token comment">// 路由元信息  其实就是存储数据的对象 我们可以在这里放置一些信息</span>
+      <span class="token literal-property property">meta</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"员工管理"</span><span class="token punctuation">,</span> <span class="token comment">// meta属性的里面的属性 随意定义 但是这里为什么要用title呢， 因为左侧导航会读取我们的路由里的meta里面的title作为显示菜单名称</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 当你的访问地址 是 /demo的时候 layout组件会显示 此时 你的二级路由的默认组件  也会显示</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 导入模块路由 引入多个模块的规则</span>
+
+<span class="token keyword">import</span> demo <span class="token keyword">from</span> <span class="token string">"./modules/demo"</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 动态路由</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> asyncRoutes <span class="token operator">=</span> <span class="token punctuation">[</span>demo<span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="Vue-项目权限处理"><a href="#Vue-项目权限处理" class="headerlink" title="Vue 项目权限处理"></a>Vue 项目权限处理</h4><p>权限控制常见分为三大块</p>
+<ul>
+<li><strong>菜单权限控制</strong>(路由权限)</li>
+<li><strong>按钮权限控制</strong></li>
+<li>请求 url 权限控制。/ 401 402 403</li>
+</ul>
+<p>权限管理在后端中主要体现在对接口访问权限的控制，在前端中主要体现在对菜单访问权限的控制。</p>
+<ol>
+<li><p>按钮权限控制比较容易，主要采取的方式是从后端返回按钮的权限标识，然后在前端进行显隐操作 v-if / disabled。</p>
+</li>
+<li><p>url 权限控制，主要是后端代码来控制，前端只需要规范好格式即可。</p>
+</li>
+<li><p>剩下的菜单权限控制，是相对复杂一些的</p>
+<ol>
+<li><strong>需要在路由设计时, 就拆分成静态路由和动态路由</strong><ol>
+<li>静态路由: 所有用户都能访问到的路由, 不会动态变化的 (登录页, 首页, 404, …)</li>
+<li>动态路由: 动态控制的路由, 只有用户有这个权限, 才将这个路由添加给你 (审批页, 社保页, 权限管理页…)</li>
+</ol>
+</li>
+<li>用户登录进入首页时, 需要立刻发送请求, 获取个人信息 (包含权限的标识)<ol>
+<li><strong>利用权限信息的标识, 筛选出合适的动态路由</strong>,</li>
+<li>通过路由的 <strong>addRoute 方法</strong>, 动态添加路由即可!</li>
+<li>router.options.routes (拿的是默认配置的项, 拿不到动态新增的) 不是响应式的!</li>
+<li>为了能正确的显示菜单, 为了能够将来正确的获取到用户路由, 我们需要用<strong>vuex 管理 routes 路由数组</strong></li>
+<li>利用 vuex 中的 routes, 动态渲染菜单</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="菜单权限控制"><a href="#菜单权限控制" class="headerlink" title="菜单权限控制"></a>菜单权限控制</h4><p>在权限管理页面中，我们设置了一个<strong>标识</strong>， 这个标识可以和我们的路由模块进行关联</p>
+<p>也就是说，如果用户拥有这个标识，那么用户就可以<strong>拥有这个路由模块</strong>，如果没有这个标识，就不能<strong>访问路由模块</strong></p>
+<blockquote>
+<p>用什么来实现？</p>
+<p>vue-router 提供了一个叫做<a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/api/#router-addroute">addRoute</a>的 API 方法，这个方法的含义是<strong>动态添加路由规则</strong></p>
+</blockquote>
+<p>以下是示例具体实现以项目为准：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"># 我们可以在vuex中新增一个permission模块
+<span class="token comment">// vuex的权限模块</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> constantRoutes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/router'</span>
+<span class="token comment">// vuex中的permission模块用来存放当前的 静态路由 + 当前用户的 权限路由</span>
+<span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">routes</span><span class="token operator">:</span> constantRoutes <span class="token comment">// 所有人默认拥有静态路由</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> mutations <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// newRoutes可以认为是 用户登录 通过权限所得到的动态路由的部分</span>
+  <span class="token function">setRoutes</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> newRoutes</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 下面这么写不对 不是语法不对 是业务不对</span>
+    <span class="token comment">// state.routes = [...state.routes, ...newRoutes]</span>
+    <span class="token comment">// 有一种情况  张三 登录 获取了动态路由 追加到路由上  李四登录 4个动态路由</span>
+    <span class="token comment">// 应该是每次更新 都应该在静态路由的基础上进行追加</span>
+    state<span class="token punctuation">.</span>routes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>constantRoutes<span class="token punctuation">,</span> <span class="token operator">...</span>newRoutes<span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> actions <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">namespaced</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  state<span class="token punctuation">,</span>
+  mutations<span class="token punctuation">,</span>
+  actions
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Vuex 筛选权限路由</p>
+<blockquote>
+<p>OK， 那么我们在哪将用户的标识和权限进行关联呢 ？</p>
+</blockquote>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E6%8B%A6%E6%88%AA.png"></p>
+<p>我们可以在这张图中，进一步的进行操作</p>
+<p><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/%E7%AD%9B%E9%80%89%E8%B7%AF%E7%94%B1.png"></p>
+<p>接下来， vuex 的 permission 中提供一个 action，进行关联</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> asyncRoutes<span class="token punctuation">,</span> constantRoutes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/router'</span>
+
+<span class="token keyword">const</span> actions <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 筛选权限路由</span>
+  <span class="token comment">// 第二个参数为当前用户的所拥有的菜单权限</span>
+  <span class="token comment">// menus: ["settings","permissions"]</span>
+  <span class="token comment">// asyncRoutes是所有的动态路由</span>
+  <span class="token comment">// asyncRoutes  [{path: 'setting',name: 'setting'},{}]</span>
+  <span class="token function">filterRoutes</span><span class="token punctuation">(</span><span class="token parameter">context<span class="token punctuation">,</span> menus</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> routes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token comment">//   筛选出 动态路由中和menus中能够对上的路由</span>
+    menus<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// key就是标识</span>
+      <span class="token comment">// asyncRoutes 找 有没有对象中的name属性等于 key的 如果找不到就没权限 如果找到了 要筛选出来</span>
+      routes<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">...</span>asyncRoutes<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> item<span class="token punctuation">.</span>name <span class="token operator">===</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 得到一个数组 有可能 有元素 也有可能是空数组</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token comment">// 得到的routes是所有模块中满足权限要求的路由数组</span>
+    <span class="token comment">// routes就是当前用户所拥有的 动态路由的权限</span>
+    context<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'setRoutes'</span><span class="token punctuation">,</span> routes<span class="token punctuation">)</span> <span class="token comment">// 将动态路由提交给mutations</span>
+    <span class="token keyword">return</span> routes <span class="token comment">// 这里为什么还要return  state数据 是用来 显示左侧菜单用的  return  是给路由addRoutes用的</span>
+  <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>权限拦截处调用筛选权限 Action</p>
+<p>在拦截的位置，调用关联 action， 获取新增 routes，并且<strong>addRoute</strong></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 权限拦截在路由跳转  导航守卫</span>
+
+<span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">"@/router"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> store <span class="token keyword">from</span> <span class="token string">"@/store"</span><span class="token punctuation">;</span> <span class="token comment">// 引入store实例 和组件中的this.$store是一回事</span>
+<span class="token keyword">import</span> nprogress <span class="token keyword">from</span> <span class="token string">"nprogress"</span><span class="token punctuation">;</span> <span class="token comment">// 引入进度条</span>
+<span class="token keyword">import</span> <span class="token string">"nprogress/nprogress.css"</span><span class="token punctuation">;</span> <span class="token comment">// 引入进度条样式</span>
+<span class="token comment">// 不需要导出  因为只需要让代码执行即可</span>
+<span class="token comment">// 前置守卫</span>
+<span class="token comment">// next是前置守卫必须必须必须执行的钩子  next必须执行 如果不执行 页面就死了</span>
+<span class="token comment">// next()  放过</span>
+<span class="token comment">// next(false) 跳转终止</span>
+<span class="token comment">// next(地址) 跳转到某个地址</span>
+<span class="token keyword">const</span> whiteList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"/login"</span><span class="token punctuation">,</span> <span class="token string">"/404"</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 定义白名单</span>
+router<span class="token punctuation">.</span><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  nprogress<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 开启进度条的意思</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>store<span class="token punctuation">.</span>getters<span class="token punctuation">.</span>token<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 只有有token的情况下 才能获取资料</span>
+    <span class="token comment">//   如果有token</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>to<span class="token punctuation">.</span>path <span class="token operator">===</span> <span class="token string">"/login"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 如果要访问的是 登录页</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 跳到主页  // 有token 用处理吗？不用</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 只有放过的时候才去获取用户资料</span>
+      <span class="token comment">// 是每次都获取吗</span>
+      <span class="token comment">// 如果当前vuex中有用户的资料的id 表示 已经有资料了 不需要获取了 如果没有id才需要获取</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>store<span class="token punctuation">.</span>getters<span class="token punctuation">.</span>userId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 如果没有id才表示当前用户资料没有获取过</span>
+        <span class="token comment">// async 函数所return的内容 用 await就可以接收到</span>
+        <span class="token keyword">const</span> <span class="token punctuation">{</span> roles <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token string">"user/getUserInfo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 如果说后续 需要根据用户资料获取数据的话 这里必须改成 同步</span>
+        <span class="token comment">// 筛选用户的可用路由</span>
+        <span class="token comment">// actions中函数 默认是Promise对象 调用这个对象 想要获取返回的值话 必须 加 await或者是then</span>
+        <span class="token comment">// actions是做异步操作的</span>
+        <span class="token keyword">const</span> routes <span class="token operator">=</span> <span class="token keyword">await</span> store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span>
+          <span class="token string">"permission/filterRoutes"</span><span class="token punctuation">,</span>
+          roles<span class="token punctuation">.</span>menus
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// routes就是筛选得到的动态路由</span>
+        <span class="token comment">// 动态路由 添加到 路由表中 默认的路由表 只有静态路由 没有动态路由</span>
+        <span class="token comment">// addRoutes  必须 用 next(地址) 不能用next()</span>
+        router<span class="token punctuation">.</span><span class="token function">addRoutes</span><span class="token punctuation">(</span>routes<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 添加动态路由到路由表  铺路</span>
+        <span class="token comment">// 添加完动态路由之后</span>
+        <span class="token function">next</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 相当于跳到对应的地址  相当于多做一次跳转 为什么要多做一次跳转</span>
+        <span class="token comment">// 进门了，但是进门之后我要去的地方的路还没有铺好，直接走，掉坑里，多做一次跳转，再从门外往里进一次，跳转之前 把路铺好，再次进来的时候，路就铺好了</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">//   没有token的情况下</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>whiteList<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>path<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">//  表示要去的地址在白名单</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token string">"/login"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  nprogress<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 解决手动切换地址时 进度条不关闭的问题</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 后置守卫</span>
+router<span class="token punctuation">.</span><span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  nprogress<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭进度条</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>静态路由动态路由解除合并<br><strong>注意</strong>： 这里有个非常容易出问题的位置，当我们判断用户是否已经添加路由的前后，不能都是用**next()**，</p>
+<p>在添加路由之后应该使用 <strong>next(to.path)<strong>， 否则会使刷新页面之后 权限消失，这属于一个 vue-router 的</strong>已知缺陷</strong></p>
+<p>同时，不要忘记，我们将原来的静态路由 + 动态路由合体的模式 改成 只有静态路由 <strong><code>src/router/index.js</code></strong><br><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/route.png"><br><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1.png"><br><img src="https://blog-1306751625.cos.ap-shanghai.myqcloud.com/images/%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%90%8E%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1.png"></p>
+<h4 id="登出时，重置路由权限和-404-问题"><a href="#登出时，重置路由权限和-404-问题" class="headerlink" title="登出时，重置路由权限和 404 问题"></a>登出时，重置路由权限和 404 问题</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">resetRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> newRouter <span class="token operator">=</span> <span class="token function">createRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  router<span class="token punctuation">.</span>matcher <span class="token operator">=</span> newRouter<span class="token punctuation">.</span>matcher<span class="token punctuation">;</span> <span class="token comment">// 重新设置路由的可匹配路径</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>没错，这个方法就是将路由重新实例化，相当于换了一个新的路由，之前**<code>加的路由</code>**自然不存在了，只需要在登出的时候， 处理一下即可</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 登出的action</span>
+<span class="token function">lgout</span><span class="token punctuation">(</span><span class="token parameter">context</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 删除token</span>
+  context<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'removeToken'</span><span class="token punctuation">)</span> <span class="token comment">// 不仅仅删除了vuex中的 还删除了缓存中的</span>
+  <span class="token comment">// 删除用户资料</span>
+  context<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'removeUserInfo'</span><span class="token punctuation">)</span> <span class="token comment">// 删除用户信息</span>
+  <span class="token comment">// 重置路由</span>
+  <span class="token function">resetRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// 还有一步  vuex中的数据是不是还在</span>
+  <span class="token comment">// 要清空permission模块下的state数据</span>
+  <span class="token comment">// vuex中 user子模块  permission子模块</span>
+  <span class="token comment">// 子模块调用子模块的action  默认情况下 子模块的context是子模块的</span>
+  <span class="token comment">// 父模块 调用 子模块的action</span>
+  context<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'permission/setRoutes'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">root</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token comment">// 子模块调用子模块的action 可以 将 commit的第三个参数 设置成  { root: true } 就表示当前的context不是子模块了 而是父模块</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>除此之外，我们发现在页面刷新的时候，本来应该拥有权限的页面出现了 404，这是因为 404 的匹配权限放在了静态路由，而动态路由在没有 addRoute 之前，找不到对应的地址，就会显示 404，所以我们需要将 404 放置到动态路由的最后</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">router<span class="token punctuation">.</span><span class="token function">addRoute</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">...</span>routes<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span> <span class="token literal-property property">redirect</span><span class="token operator">:</span> <span class="token string">"/404"</span><span class="token punctuation">,</span> <span class="token literal-property property">hidden</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 添加到路由表</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="功能权限的受控思路"><a href="#功能权限的受控思路" class="headerlink" title="功能权限的受控思路"></a>功能权限的受控思路</h4><p>当我们拥有了一个模块，一个页面的访问权限之后，页面中的某些功能，用户可能有，也可能没有，这就是功能权限<br>我们要做的就是看看用户，是否拥有<strong>功能权限</strong>这个标识，有就可以让删除能用，没有就隐藏或者禁用<br>怎么做？ 我们可以采用 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/mixins.html">mixin(混入)</a>来让所有的组件可以拥有一个公共的方法</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> store <span class="token keyword">from</span> <span class="token string">"@/store"</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">//   检查是否有权限</span>
+    <span class="token function">checkPermission</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> <span class="token punctuation">{</span> userInfo <span class="token punctuation">}</span> <span class="token operator">=</span> store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>user<span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>userInfo<span class="token punctuation">.</span>roles<span class="token punctuation">.</span>points <span class="token operator">&amp;&amp;</span> userInfo<span class="token punctuation">.</span>roles<span class="token punctuation">.</span>points<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> userInfo<span class="token punctuation">.</span>roles<span class="token punctuation">.</span>points<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> item <span class="token operator">===</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token comment">// 使用示例</span>
+ <span class="token operator">&lt;</span>el<span class="token operator">-</span>button <span class="token operator">:</span>disabled<span class="token operator">=</span><span class="token string">"!checkPermission('POINT-USER-UPDATE')"</span><span class="token punctuation">)</span>"<span class="token operator">&gt;</span>查看<span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>button<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>路由配制:</p>
+<ul>
+<li><p>把需要权限的路由与不需要权限的路由分开配制了,默认路由只有不需要权限的路由配制</p>
+</li>
+<li><p>在获取到用户信息后,通过用户信息返回给我们当前用户能访问的页面匹配出相应的权限路由,通过 addRoutes 添加进入路由</p>
+<ul>
+<li>添加的路由不能立马使用 next(to.fullPath)</li>
+<li>404 的路由,不能写在静态路由内,需要在匹配出权限路由后,添加到最后,再通过 addRoutes 添加到路由列表</li>
+</ul>
+</li>
+<li><p>菜单路由处理</p>
+<ul>
+<li>将所有的能访问的路由我们都通过 vuex 中设置一个变量进行管理,后面动态匹配的权限路由也添加进去了</li>
+<li>我们菜单都是通过循环该 vuex 的路由数据进行的渲染<ul>
+<li>因为$router 内的 options 它的值不是双向绑定的,我们 addRoutes 后它不会更新,所以我们通过 vuex 进行管理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>退出 坑点:</p>
+<ul>
+<li>每次退出:重置路由(不然可能造成路由混乱 ,因为上一个用户的路由列表会影响下一个)</li>
+</ul>
+</li>
+<li><p>按钮权限</p>
+<ul>
+<li>页面管理内加入按钮配制</li>
+<li>通过角色管理配制该角色是否能访问某按钮</li>
+<li>代码我们通过 mixin 全局写了一个方法作为判断该用户是否可以访问某按钮<ul>
+<li>通过用户信息内返回给我们能访问的按钮列表做的处理</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="将数组数据转化成树形结构"><a href="#将数组数据转化成树形结构" class="headerlink" title="将数组数据转化成树形结构"></a>将数组数据转化成树形结构</h4><p>将列表型的数据，转化成树形数据，这里需要用到<strong>递归算法</strong></p>
+<ul>
+<li>将列表型的数据转化成树形数据 =&gt; 递归算法 =&gt; 自身调用自身 =&gt; 一定条件不能一样， 否则就会死循环</li>
+<li>遍历树形 有一个重点 要先找一个头儿</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">tranListToTreeData</span><span class="token punctuation">(</span><span class="token parameter">list<span class="token punctuation">,</span> rootValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  list<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>item<span class="token punctuation">.</span>pid <span class="token operator">===</span> rootValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 找到之后 就要去找 item 下面有没有子节点</span>
+      <span class="token keyword">const</span> children <span class="token operator">=</span> <span class="token function">tranListToTreeData</span><span class="token punctuation">(</span>list<span class="token punctuation">,</span> item<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>children<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 如果 children 的长度大于 0 说明找到了子节点</span>
+        item<span class="token punctuation">.</span>children <span class="token operator">=</span> children<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将内容加入到数组中</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> arr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="webpack-配置排除打包引入cdn"><a href="#webpack-配置排除打包引入cdn" class="headerlink" title="webpack 配置排除打包引入cdn"></a>webpack 配置排除打包引入cdn</h4><p>通过配置 vue-cli 把一些平常不需要用的包排除在打包文件之外。</p>
+<p>例如:我们使用了 vue xlsx 和 element ,但是打包的时候我们让 <strong>webpack</strong> 不打包 <strong>vue</strong> <strong>xlsx</strong> 和 <strong>element</strong></p>
+<p>先找到 vue.config.js， 添加 <strong>externals</strong> 项，具体如下：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token literal-property property">configureWebpack</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 配置单页应用程序的页面的标题</span>
+  <span class="token comment">// 省略其他....</span>
+  <span class="token literal-property property">externals</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+     <span class="token comment">/**
+      * externals 对象属性解析。
+      * 基本格式：
+      * '包名' : '在项目中引入的名字'
+      *
+    */</span>
+    <span class="token string-property property">'vue'</span><span class="token operator">:</span> <span class="token string">'Vue'</span><span class="token punctuation">,</span>
+    <span class="token string-property property">'element-ui'</span><span class="token operator">:</span> <span class="token string">'ElementUI'</span><span class="token punctuation">,</span>
+    <span class="token string-property property">'xlsx'</span><span class="token operator">:</span> <span class="token string">'XLSX'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">alias</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">'@'</span><span class="token operator">:</span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'src'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>再次运行打包，我们会发现包的体积已经大幅减小：上面的三个包已经不在打包的目标文件中了。</p>
+<p>做相关配置：通过公共网络资源方式把除在外的包引入在 index.html</p>
+<p>注意，在开发项目时，文件资源还是可以从本地 node_modules 中取出，而只有项目上线了，才需要去使用外部资源。</p>
+<p>此时我们可以使用环境变量来进行区分。具体如下：</p>
+<p>在 vue.config.js 文件中：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> externals <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> cdn <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">css</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token literal-property property">js</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> isProduction <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">"production"</span><span class="token punctuation">;</span> <span class="token comment">// 判断是否是生产环境</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>isProduction<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  externals <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * externals 对象属性解析：
+     * '包名' : '在项目中引入的名字'
+     */</span>
+    <span class="token literal-property property">vue</span><span class="token operator">:</span> <span class="token string">"Vue"</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"element-ui"</span><span class="token operator">:</span> <span class="token string">"ELEMENT"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">xlsx</span><span class="token operator">:</span> <span class="token string">"XLSX"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  cdn <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">css</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"https://unpkg.com/element-ui/lib/theme-chalk/index.css"</span><span class="token punctuation">,</span> <span class="token comment">// element-ui css 样式表</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">js</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token comment">// vue must at first!</span>
+      <span class="token string">"https://unpkg.com/vue@2.6.12/dist/vue.js"</span><span class="token punctuation">,</span> <span class="token comment">// vuejs</span>
+      <span class="token string">"https://unpkg.com/element-ui/lib/index.js"</span><span class="token punctuation">,</span> <span class="token comment">// element-ui js</span>
+      <span class="token string">"https://cdn.jsdelivr.net/npm/xlsx@0.16.6/dist/xlsx.full.min.js"</span><span class="token punctuation">,</span> <span class="token comment">// xlsx</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>webpack 配置 externals 配置项</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token literal-property property">configureWebpack</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 配置单页应用程序的页面的标题</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> name<span class="token punctuation">,</span>
+<span class="token operator">+</span> externals<span class="token operator">:</span> externals<span class="token punctuation">,</span>
+  <span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">alias</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">'@'</span><span class="token operator">:</span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'src'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注入 CDN 配置到 html 模板</p>
+<p>之后通过 html-webpack-plugin 注入到 index.html 之中:</p>
+<p>在 vue.config.js 中，设置</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">chainWebpack</span><span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token comment">// 注入cdn变量 (打包时会执行)</span>
+config<span class="token punctuation">.</span><span class="token function">plugin</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">tap</span><span class="token punctuation">(</span><span class="token parameter">args</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+ args<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>cdn <span class="token operator">=</span> cdn <span class="token comment">// 配置cdn给插件</span>
+  <span class="token keyword">return</span> args
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// 省略其他...</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>找到 public/index.html 通过配置 CDN Config 依次注入 css 和 js。</p>
+<p>修改 head 的内容如下：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>head<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>meta http<span class="token operator">-</span>equiv<span class="token operator">=</span><span class="token string">"X-UA-Compatible"</span> content<span class="token operator">=</span><span class="token string">"IE=edge,chrome=1"</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"viewport"</span> content<span class="token operator">=</span><span class="token string">"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>link rel<span class="token operator">=</span><span class="token string">"icon"</span> href<span class="token operator">=</span><span class="token string">"&lt;%= BASE_URL %&gt;favicon.ico"</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>title<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">%=</span> webpackConfig<span class="token punctuation">.</span>name <span class="token operator">%</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 引入样式 <span class="token operator">--</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> css <span class="token keyword">of</span> htmlWebpackPlugin<span class="token punctuation">.</span>options<span class="token punctuation">.</span>cdn<span class="token punctuation">.</span>css<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>link rel<span class="token operator">=</span><span class="token string">"stylesheet"</span> href<span class="token operator">=</span><span class="token string">"&lt;%=css%&gt;"</span><span class="token operator">&gt;</span>
+       <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
+
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 引入<span class="token constant">JS</span> <span class="token operator">--</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> js <span class="token keyword">of</span> htmlWebpackPlugin<span class="token punctuation">.</span>options<span class="token punctuation">.</span>cdn<span class="token punctuation">.</span>js<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"&lt;%=js%&gt;"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+   <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>最后就可以进行打包 ，检查效果了</p>
+<p>检查生成的 index.html 中是否有 css 引入和 js 引入</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token literal-property property">publicPath</span><span class="token operator">:</span> <span class="token string">'./'</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/paidaxing-11.githu.io/tags/%E9%A1%B9%E7%9B%AE/">
+                                    <span class="chip bg-color">项目</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/paidaxing-11.githu.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/paidaxing-11.githu.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/paidaxing-11.githu.io/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/paidaxing-11.githu.io/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/paidaxing-11.githu.io/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/paidaxing-11.githu.io/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/paidaxing-11.githu.io/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: null,
+        id: '2022-05-19T17-25-30',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+        <link rel="stylesheet" href="/paidaxing-11.githu.io/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/paidaxing-11.githu.io/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitment-content" class="card-content"></div>
+</div>
+
+<script src="/paidaxing-11.githu.io/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Thu May 19 2022 17:25:30 GMT+0800',
+    owner: '',
+    repo: '',
+    oauth: {
+        client_id: '',
+        client_secret: ''
+    }
+});
+
+gitment.render('gitment-content');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/paidaxing-11.githu.io/2022/05/19/%E5%89%8D%E7%AB%AF/CSS/10.%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/paidaxing-11.githu.io/medias/featureimages/3.jpg" class="responsive-img" alt="弹性布局">
+                        
+                        <span class="card-title">弹性布局</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/paidaxing-11.githu.io/categories/web%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    web前端
+                                </a>
+                            
+                            <a href="/paidaxing-11.githu.io/categories/web%E5%89%8D%E7%AB%AF/CSS/" class="post-category">
+                                    CSS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/paidaxing-11.githu.io/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/paidaxing-11.githu.io/2022/05/19/%E5%89%8D%E7%AB%AF/CSS/11.%E6%A0%85%E6%A0%BC%E7%B3%BB%E7%BB%9F/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/paidaxing-11.githu.io/medias/featureimages/19.jpg" class="responsive-img" alt="栅格系统">
+                        
+                        <span class="card-title">栅格系统</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/paidaxing-11.githu.io/categories/web%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    web前端
+                                </a>
+                            
+                            <a href="/paidaxing-11.githu.io/categories/web%E5%89%8D%E7%AB%AF/CSS/" class="post-category">
+                                    CSS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/paidaxing-11.githu.io/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/paidaxing-11.githu.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/paidaxing-11.githu.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/paidaxing-11.githu.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/paidaxing-11.githu.io/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/paidaxing-11.githu.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+ <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/paidaxing-11.githu.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/paidaxing-11.githu.io/libs/aplayer/APlayer.min.js"></script>
+<script src="/paidaxing-11.githu.io/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            <!-- Copyright&nbsp;&copy; -->
+            
+                <!-- <span id="year">2022</span> -->
+            
+            <!-- <a href="/paidaxing-11.githu.io/about" target="_blank">派大星_qMOW</a> -->
+            <!-- |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
+            <br>
+            
+            
+            
+                
+            
+            
+                <!-- <span id="busuanzi_container_site_pv">
+                &nbsp;&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span> -->
+            
+            
+                <!-- <span id="busuanzi_container_site_uv">
+                &nbsp; &nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span> -->
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/paidaxing-11" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1904290943@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1904290943" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1904290943" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/paidaxing-11.githu.io/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+ <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/paidaxing-11.githu.io/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+ <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/paidaxing-11.githu.io/libs/materialize/materialize.min.js"></script>
+    <script src="/paidaxing-11.githu.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/paidaxing-11.githu.io/libs/aos/aos.js"></script>
+    <script src="/paidaxing-11.githu.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/paidaxing-11.githu.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/paidaxing-11.githu.io/js/matery.js"></script>
+
+     
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+    <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+    <script src="/paidaxing-11.githu.io/libs/others/TencentCaptcha.js"></script>
+    <button
+      id="TencentCaptcha"
+      data-appid="xxxxxxxxxx"
+      data-cbfn="callback"
+      type="button"
+      hidden
+    ></button>
+     <!-- Baidu Analytics -->
+ <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+ 
+    <script
+      src="/paidaxing-11.githu.io/libs/others/clicklove.js"
+      async="async"
+    ></script>
+     
+    <script
+      async
+      src="/paidaxing-11.githu.io/libs/others/busuanzi.pure.mini.js"
+    ></script>
+      
+
+    <!--腾讯兔小巢-->
+        
+    <script
+      src="/paidaxing-11.githu.io/libs/instantpage/instantpage.js"
+      type="module"
+    ></script>
+    
+  </body>
+</html>
